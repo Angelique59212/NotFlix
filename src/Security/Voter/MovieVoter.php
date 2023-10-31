@@ -47,7 +47,6 @@ class MovieVoter extends Voter
             } elseif ($this->security->isGranted("ROLE_FREE")) {
                 return $this->verifyLimitAccess($user, $subject);
             }
-
         }
         return false;
     }
