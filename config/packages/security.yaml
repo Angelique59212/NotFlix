@@ -33,6 +33,7 @@ security:
     access_control:
         - { path: ^/premium, roles: ROLE_PREMIUM }
         - { path: ^/admin, roles: ROLE_ADMIN }
+
     role_hierarchy:
         ROLE_PREMIUM: ROLE_USER
         ROLE_ADMIN: [ ROLE_PREMIUM, ROLE_ALLOWED_TO_SWITCH ]

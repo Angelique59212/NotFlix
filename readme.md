@@ -15,9 +15,9 @@ Vous devez mettre en place un système de contrôle d'accès solide pour gérer 
 - _Définissez trois types d'utilisateurs : "utilisateur gratuit", "utilisateur premium" et "administrateur"._
 
 
-- Utilisez des "voters" pour contrôler l'accès aux vidéos en fonction du type d'abonnement de l'utilisateur.
+- _Utilisez des "voters" pour contrôler l'accès aux vidéos en fonction du type d'abonnement de l'utilisateur._
 
-    -Par exemple, les utilisateurs gratuits ne peuvent accéder qu'à un contenu limité, tandis que les utilisateurs premium ont accès à l'intégralité de la bibliothèque de vidéos.
+    -_Par exemple, les utilisateurs gratuits ne peuvent accéder qu'à un contenu limité, tandis que les utilisateurs premium ont accès à l'intégralité de la bibliothèque de vidéos._
 
 - Mettez en place des restrictions pour limiter le nombre de périphériques sur lesquels un utilisateur peut regarder simultanément du contenu en fonction de son abonnement.
 

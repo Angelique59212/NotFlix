@@ -3,6 +3,7 @@
 namespace App\Security\Voter;
 
 use App\Entity\Movie;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -16,7 +17,7 @@ class MovieVoter extends Voter
     /**
      * @param $security
      */
-    public function __construct($security)
+    public function __construct(Security $security)
     {
         $this->security = $security;
     }
@@ -41,13 +42,12 @@ class MovieVoter extends Voter
                 return false;
             }
 
-            if ($attribute == self::VIEW) {
-                if ($this->security->isGranted("ROLE_PREMIUM")) {
-                    return true;
-                }elseif ($this->security->isGranted("ROLE_FREE")){
-                    return $this->verifyLimitAccess($user, $subject);
-                }
+            if ($this->security->isGranted("ROLE_PREMIUM")) {
+                return true;
+            } elseif ($this->security->isGranted("ROLE_FREE")) {
+                return $this->verifyLimitAccess($user, $subject);
             }
+
         }
         return false;
     }
