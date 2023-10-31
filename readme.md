@@ -10,9 +10,9 @@ Vous devez mettre en place un système de contrôle d'accès solide pour gérer 
 
 - _Implémentez un système d'authentification permettant aux utilisateurs de s'inscrire, de se connecter et de se déconnecter._
 
-- Crud des vidéos
+- _Crud des vidéos_
 
-- Définissez trois types d'utilisateurs : "utilisateur gratuit", "utilisateur premium" et "administrateur".
+- _Définissez trois types d'utilisateurs : "utilisateur gratuit", "utilisateur premium" et "administrateur"._
 
 
 - Utilisez des "voters" pour contrôler l'accès aux vidéos en fonction du type d'abonnement de l'utilisateur.
