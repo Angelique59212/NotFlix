@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Subscription;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -22,7 +24,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter les termes.',
                     ]),
                 ],
             ])
@@ -33,7 +35,7 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Merci de mettre un mot de passe',
                     ]),
                     new Length([
                         'min' => 6,
@@ -43,7 +45,15 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-        ;
+            ->add('subscription', EntityType::class, [
+                'class' => Subscription::class,
+                'choice_label' => 'name',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please select a subscription',
+                    ]),
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

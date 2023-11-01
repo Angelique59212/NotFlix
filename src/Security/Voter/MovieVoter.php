@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class MovieVoter extends Voter
 {
-    private $security;
+    private Security $security;
 
     public const VIEW = 'MOVIES_VIEW';
 
@@ -35,18 +35,24 @@ class MovieVoter extends Voter
             return false;
         }
 
-        if ($attribute == self::VIEW) {
-            $subscription = $user->getSubscription();
+        switch ($attribute) {
+            case self::VIEW:
+                if ($this->security->isGranted('ROLE_ADMIN')) {
+                    return true;
+                }
 
-            if (!$subscription) {
+                if ($this->security->isGranted('ROLE_PREMIUM')) {
+                    return true;
+                }
+
+                if ($this->security->isGranted('ROLE_USER')) {
+                   $subscription = $user->getSubscription();
+                   if (!$subscription) {
+                       return false;
+                   }
+                    return $this->verifyLimitAccess($subscription, $subject);
+                }
                 return false;
-            }
-
-            if ($this->security->isGranted("ROLE_PREMIUM")) {
-                return true;
-            } elseif ($this->security->isGranted("ROLE_FREE")) {
-                return $this->verifyLimitAccess($user, $subject);
-            }
         }
         return false;
     }
