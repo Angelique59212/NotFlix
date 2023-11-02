@@ -21,7 +21,7 @@ Vous devez mettre en place un système de contrôle d'accès solide pour gérer 
 
 - Mettez en place des restrictions pour limiter le nombre de périphériques sur lesquels un utilisateur peut regarder simultanément du contenu en fonction de son abonnement.
 
-- Personnalisez les messages d'erreur pour éviter d'afficher des informations sensibles aux utilisateurs non autorisés ou des redirections.
+- _Personnalisez les messages d'erreur pour éviter d'afficher des informations sensibles aux utilisateurs non autorisés ou des redirections._
 
 Livrables attendus :
 

@@ -1,4 +1,11 @@
-<form method="post" action="{{ path('app_movie_delete', {'id': movie.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ movie.id) }}">
-    <button class="btn">Delete</button>
-</form>
+{% if is_granted('ROLE_ADMIN') %}
+    <form method="post" action="{{ path('app_movie_delete', {'id': movie.id}) }}"
+          onsubmit="return confirm('Es tu sûr de vouloir supprimer la vidéo?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ movie.id) }}">
+        <div class="text-center my-4">
+            <button class="p-2 m-auto btn w-1/5 px-4 bg-form-gradient text-amber-50 shadow shadow-black rounded-sm">
+                Supprimer
+            </button>
+        </div>
+    </form>
+{% endif %}

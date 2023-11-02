@@ -1,15 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Movie{% endblock %}
+{% block title %}Nouveau Film{% endblock %}
 
 {% block body %}
-    <h1>Ajouter une vidéo</h1>
-    {{ form_start(form) }}
-    {{ form_row(form.title) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.link) }}
-    <button type="submit">Ajouter la vidéo</button>
-    {{ form_end(form) }}
+    <div class="flex items-center justify-between">
+        <h1 class="ml-4 p-4 text-8xl text-amber-50 font-bold">Notflix</h1>
+        <a class="mr-4 text-3xl text-amber-50" href="{{ path('app_home') }}">Accueil</a>
+    </div>
+    <h1 class="p-4 text-4xl text-amber-50 font-bold text-center">Ajouter une vidéo</h1>
+    <img class="m-auto w-80 p-2" src="{{ asset('build/img/add.jpg') }}" alt="">
 
-    <a href="{{ path('app_movie_index') }}">back to list</a>
+    <div class="bg-form-gradient w-1/2 m-auto text-center p-11 text-amber-50 flex flex-col rounded-md">
+        {{ form_start(form) }}
+        <div class="mb-4 flex flex-row items-center">
+            {{ form_label(form.title, 'Titre', {
+                'label_attr': {
+                    'class': 'w-1/2'
+                }}) }}
+            {{ form_widget(form.title, {
+                'attr': {
+                    'class': 'text-black w-1/2 m-auto rounded-sm'
+                }}) }}
+        </div>
+        <div class="mb-4 flex flex-row items-center">
+            {{ form_label(form.description, 'Description', {
+                'label_attr': {
+                    'class': 'w-1/2'
+                }}) }}
+            {{ form_widget(form.description, {
+                'attr': {
+                    'class': 'text-black w-1/2 m-auto rounded-sm'
+                }}) }}
+        </div>
+        <div class="mb-4 flex flex-row items-center">
+            {{ form_label(form.link, 'URL', {
+                'label_attr': {
+                    'class': 'w-1/2'
+                }}) }}
+            {{ form_widget(form.link, {
+                'attr': {
+                    'class': 'text-black w-1/2 m-auto rounded-sm'
+                }}) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+    <div class="text-center my-4">
+        <a class="p-2 btn w-1/3 px-4 bg-form-gradient text-amber-50 shadow shadow-black rounded-sm"
+           href="{{ path('app_movie_index') }}">Revenir en arrière</a>
+    </div>
 {% endblock %}

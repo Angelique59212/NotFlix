@@ -1,20 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Notflix{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="h-screen flex flex-col items-center justify-center overflow-hidden">
+        <img src="{{ asset('build/img/image_header.jpg') }}" alt="image" class="absolute">
+        <div class="relative p-11 flex items-center w-full justify-between">
+            <h1 class="ml-4 p-4 text-8xl text-amber-50 font-bold">NotFlix</h1>
+            {% if app.user is null %}
+                <a class="mr-4 p-2 m-8 btn bg-red-500 text-black font-bold shadow shadow-black border border-black transform -skew-x-12"
+                   href="{{ path('app_login') }}">S'identifier</a>
+                {% else %}
+                    <a class="mr-4 p-2 m-8 btn bg-red-500 text-black font-bold shadow shadow-black border border-black transform -skew-x-12" href="{{ path('app_logout') }}">Se déconnecter</a>
+            {% endif %}
+        </div>
+        <div class="relative text-5xl text-center font-bold text-amber-50">
+            <p>Découvrez une expérience de streaming de films comme aucune autre.</p>
+            <p>Abonnez-vous pour encore plus de vidéos</p>
+        </div>
+        {% if app.user is null %}
+        <a class="p-2 m-8 btn bg-red-500 text-black font-bold shadow shadow-black border border-black transform -skew-x-12"
+           href="{{ path('app_register') }}">S'enregistrer</a>
+            {% else %}
+                <a class="
+            relative
+            my-6
+            w-1/4
+            text-white
+            bg-gradient-to-br from-green-400 to-blue-600
+            hover:bg-gradient-to-bl
+            focus:ring-4
+            focus:outline-none
+            focus:ring-green-200
+            dark:focus:ring-green-800
+            font-medium rounded-lg
+            text-sm
+            py-2.5
+            text-center
+            m-auto
+" href="{{ path('app_movie_index') }}">Liste des films</a>
+        {% endif %}
+        <div class="m-auto bg-form-gradient flex justify-center text-center p-4 relative">
+            <p class="text-amber-50 text-4xl font-bold">Explorez un univers de films, de tous les genres, à portée de
+                clic</p>
+        </div>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/angelika/Documents/CDA AFPA/SYMFONY/NotFlix/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/angelika/Documents/CDA AFPA/SYMFONY/NotFlix/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}
